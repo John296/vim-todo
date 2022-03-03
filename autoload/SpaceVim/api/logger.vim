@@ -17,8 +17,6 @@
 "   {silent} is a Boolean. by default it is false, and log will be print to
 "   screen.
 
-let s:TIME = SpaceVim#api#import('time')
-
 let s:self = {
       \ 'name' : '',
       \ 'silent' : 1,
@@ -54,10 +52,10 @@ endfunction
 function! s:self._build_msg(msg, l) abort
   let msg = a:msg
   let time = strftime('%H:%M:%S')
-  let log = printf('[ %s ] [%s] [%00.3f] [ %5s ] %s',
+  let log = printf('[ %s ] [%s] [%00.3f] [ %s ] %s',
         \ self.name,
         \ time,
-        \ s:TIME.reltimefloat(reltime(self.clock)),
+        \ reltimefloat(reltime(self.clock)),
         \ self.levels[a:l],
         \ msg)
   return log
